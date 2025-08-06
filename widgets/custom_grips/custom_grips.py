@@ -236,3 +236,23 @@ class Widgets(object):
         self.rightgrip.setStyleSheet(u"background-color: rgb(255, 0, 127);")
         self.rightgrip.setFrameShape(QFrame.NoFrame)
         self.rightgrip.setFrameShadow(QFrame.Raised)
+
+if __name__ == "__main__":
+    import sys
+    class MainWindow(QMainWindow):
+        def __init__(self):
+            super().__init__()
+            self.setMinimumSize(400, 300)
+            self.setStyleSheet("background-color: #222222; border: 1px solid gray;")
+
+            # Add grips
+            self.top_grip = CustomGrip(self, Qt.TopEdge)
+            self.bottom_grip = CustomGrip(self, Qt.BottomEdge)
+            self.left_grip = CustomGrip(self, Qt.LeftEdge)
+            self.right_grip = CustomGrip(self, Qt.RightEdge)
+
+            self.show()
+
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    sys.exit(app.exec())
